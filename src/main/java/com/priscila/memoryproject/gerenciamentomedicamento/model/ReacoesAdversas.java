@@ -7,15 +7,18 @@ import jakarta.persistence.*;
  */
 
 @Entity
+@Table(name = "reacoesadversas")
 public class ReacoesAdversas {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
+
   private String descricao;
 
   @ManyToOne
   @JoinColumn (name = "medicamento_id")
   private Medicamentos medicamentos;
+
 
   public ReacoesAdversas(String descricao) {
     this.descricao = descricao;
@@ -31,5 +34,26 @@ public class ReacoesAdversas {
     this.medicamentos = medicamentos;
   }
 
+  public ReacoesAdversas() {}
+
+  /**
+   * Métodos.
+   */
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getDescricao() {
+    return descricao;
+  }
+
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
 
 }
