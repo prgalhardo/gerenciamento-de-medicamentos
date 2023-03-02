@@ -25,4 +25,81 @@ public class Medicamentos {
   @OneToMany(mappedBy = "medicamentos")
   private List<ReacoesAdversas> reacoesadversas = new ArrayList<>();
 
+  public Medicamentos() {}
+
+  /**
+   * Métodos.
+   */
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getNumeroRegistroAnvisa() {
+    return numeroRegistroAnvisa;
+  }
+
+  public void setNumeroRegistroAnvisa(String numeroRegistroAnvisa) {
+    this.numeroRegistroAnvisa = numeroRegistroAnvisa;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public String getDataValidade() {
+    return dataValidade;
+  }
+
+  public void setDataValidade(String dataValidade) {
+    this.dataValidade = dataValidade;
+  }
+
+  public String getTelefoneSac() {
+    return telefoneSac;
+  }
+
+  public void setTelefoneSac(String telefoneSac) {
+    this.telefoneSac = telefoneSac;
+  }
+
+  public String getPreco() {
+    return preco;
+  }
+
+  public void setPreco(String preco) {
+    this.preco = preco;
+  }
+
+  public String getQuantidadeComprimidos() {
+    return quantidadeComprimidos;
+  }
+
+  public void setQuantidadeComprimidos(String quantidadeComprimidos) {
+    this.quantidadeComprimidos = quantidadeComprimidos;
+  }
+
+  public String getFabricante() {
+    return fabricante;
+  }
+
+  public void setFabricante(String fabricante) {
+    this.fabricante = fabricante;
+  }
+
+  public List<ReacoesAdversas> getReacoesadversas() {
+    return reacoesadversas;
+  }
+
+  public void setReacoesadversas(List<ReacoesAdversas> reacoesadversas) {
+    this.reacoesadversas = reacoesadversas;
+  }
 }
