@@ -34,25 +34,13 @@ public class MedicamentosController {
   public Medicamentos atualizar(@RequestBody Medicamentos medicamentos, @PathVariable("id") Integer id) {
     return medicamentosService.atualizar(medicamentos, id);
   }
-}
 
-//
-//  /**
-//   * Método: Atualizar.
-//   */
-//
-//  @PutMapping
-//  @Transactional
-//  public ReacoesAdversas atualizar(@RequestBody ReacoesAdversas reacoesAdversas, @PathVariable("id") Integer id) {
-//    return reacoesAdversasService.atualizar(reacoesAdversas, id);
-//  }
-//
-//  /**
-//   * Método: Deletar.
-//   */
-//
-//  @DeleteMapping(value = "/{id}")
-//  public void apagar(@PathVariable("id") Integer id) {
-//    reacoesAdversasService.apagar(id);
-//  }
-//}
+  /**
+   * Método: Deletar.
+   */
+
+  @DeleteMapping(value = "/{id}")
+  public void apagar(@PathVariable("id") Integer id) {
+    medicamentosService.apagar(id);
+  }
+}
