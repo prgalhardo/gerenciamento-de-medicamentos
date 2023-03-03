@@ -3,10 +3,8 @@ package com.priscila.memoryproject.gerenciamentomedicamento.controller;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.service.ReacoesAdversasService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Classe: Reações Adversas Controller.
@@ -19,48 +17,28 @@ public class ReacoesAdversasController {
   private ReacoesAdversasService reacoesAdversasService;
 
   /**
-   * Método: Incluir nova reação adversa.
+   * Método: Incluir.
    */
 
   @PostMapping
-  public void cadastrar(@RequestBody ReacoesAdversas reacoesAdversas) {
-    return reacoesAdversasService.save(reacoesAdversas);
+  public ReacoesAdversas cadastrar(@RequestBody ReacoesAdversas reacoesAdversas) {
+    return reacoesAdversasService.cadastrar(reacoesAdversas);
+  }
+
+  /**
+   * Método: Atualizar.
+   */
+
+  @PutMapping
+  @Transactional
+  public ReacoesAdversas atualizar(@RequestBody ReacoesAdversas reacoesAdversas, @PathVariable("id") Integer id) {
+    return reacoesAdversasService.atualizar(reacoesAdversas, id);
   }
 }
 
-//@RestController
-//@RequestMapping(value = "/series")
-//public class MinhasSeriesController {
-//  @Autowired
-//  private MinhasSeriesService minhasSeriesService;
-//
-//  @GetMapping
-//  public List<Serie> findAll() {
-//    return minhasSeriesService.findAll();
-//  }
-//
-//  @PostMapping
-//  public Serie save(@RequestBody Serie serie) {
-//    return minhasSeriesService.save(serie);
-//  }
+
 //
 //  @DeleteMapping(value = "/{id}")
 //  public void delete(@PathVariable("id") Integer id) {
 //    minhasSeriesService.delete(id);
 //  }
-//
-//  @PostMapping(value = "/{id}/episodios")
-//  public Serie addEpisode(@PathVariable Integer id, @RequestBody Episodio episodio) {
-//    return minhasSeriesService.addEpisode(id, episodio);
-//  }
-//
-//  @GetMapping(value = "/{id}/episodios")
-//  public List<Episodio> listar(@PathVariable("id") Integer id) {
-//    return minhasSeriesService.listar(id);
-//  }
-//
-//  @GetMapping(value = "/tempo")
-//  public Map<String, Integer> tempoEmMinutos() {
-//    return minhasSeriesService.tempoEmMinutos();
-//  }
-//}
