@@ -18,7 +18,6 @@ public class ReacoesAdversas {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-
   private String descricao;
 
   @ManyToOne

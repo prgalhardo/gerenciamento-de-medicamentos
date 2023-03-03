@@ -2,9 +2,7 @@ package com.priscila.memoryproject.gerenciamentomedicamento.service;
 
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoExistenteException;
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoNaoEncontradoException;
-import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoNaoEncontradaException;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
-import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.MedicamentosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
