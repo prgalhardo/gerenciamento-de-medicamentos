@@ -1,5 +1,6 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.service;
 
+import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoNaoEncontradaException;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.MedicamentosRepository;
@@ -58,5 +59,17 @@ public class MedicamentosService {
       return medicamentosRepository.save(medicamentos);
     }
     return null;
+  }
+
+  /**
+   * Método: Deletar.
+   */
+
+  public void apagar(Integer id) {
+    if (medicamentosRepository.existsById(id)) {
+      medicamentosRepository.deleteById(id);
+    } else {
+      throw new MedicamentoNaoEncontradoException("Medicamento não existe!");
+    }
   }
 }
