@@ -3,10 +3,8 @@ package com.priscila.memoryproject.gerenciamentomedicamento.controller;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
 import com.priscila.memoryproject.gerenciamentomedicamento.service.MedicamentosService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Classe: Medicamentos Controller.
@@ -26,22 +24,18 @@ public class MedicamentosController {
   public Medicamentos cadastrar(@RequestBody Medicamentos medicamentos) {
     return medicamentosService.cadastrar(medicamentos);
   }
+
+  /**
+   * Método: Atualizar.
+   */
+
+  @PutMapping
+  @Transactional
+  public Medicamentos atualizar(@RequestBody Medicamentos medicamentos, @PathVariable("id") Integer id) {
+    return medicamentosService.atualizar(medicamentos, id);
+  }
 }
 
-//@RestController
-//@RequestMapping(value = "/reacoesadversas")
-//public class ReacoesAdversasController {
-//  @Autowired
-//  private ReacoesAdversasService reacoesAdversasService;
-//
-//  /**
-//   * Método: Incluir.
-//   */
-//
-//  @PostMapping
-//  public ReacoesAdversas cadastrar(@RequestBody ReacoesAdversas reacoesAdversas) {
-//    return reacoesAdversasService.cadastrar(reacoesAdversas);
-//  }
 //
 //  /**
 //   * Método: Atualizar.
