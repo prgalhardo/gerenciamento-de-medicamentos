@@ -1,7 +1,10 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.controller;
 
+import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.service.ReacoesAdversasService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReacoesAdversasController {
   @Autowired
   private ReacoesAdversasService reacoesAdversasService;
+
+  /**
+   * Método: Incluir nova reação adversa.
+   */
+
+  @PostMapping
+  public void cadastrar(@RequestBody ReacoesAdversas reacoesAdversas) {
+    return reacoesAdversasService.save(reacoesAdversas);
+  }
 }
 
 //@RestController
