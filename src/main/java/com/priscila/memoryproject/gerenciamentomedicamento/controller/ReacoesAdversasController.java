@@ -44,10 +44,3 @@ public class ReacoesAdversasController {
     reacoesAdversasService.apagar(id);
   }
 }
-
-
-//
-//  @DeleteMapping(value = "/{id}")
-//  public void delete(@PathVariable("id") Integer id) {
-//    minhasSeriesService.delete(id);
-//  }
