@@ -13,10 +13,9 @@ import jakarta.persistence.Table;
  */
 
 @Entity
-@Table(name = "reacoesadversas")
 public class ReacoesAdversas {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String descricao;
 

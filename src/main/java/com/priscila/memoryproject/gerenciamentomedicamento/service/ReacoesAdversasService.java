@@ -6,6 +6,8 @@ import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdversasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -18,7 +20,15 @@ public class ReacoesAdversasService {
   private ReacoesAdversasRepository reacoesAdversasRepository;
 
   /**
-   * Método: Incluir
+   * Método: Listar.
+   */
+
+  public List<ReacoesAdversas> listar() {
+    return reacoesAdversasRepository.findAll();
+  }
+
+  /**
+   * Método: Incluir.
    */
 
   public ReacoesAdversas cadastrar(ReacoesAdversas reacoesAdversas) {
@@ -29,7 +39,7 @@ public class ReacoesAdversasService {
   }
 
   /**
-   * Método: Atualizar
+   * Método: Atualizar.
    */
 
   public ReacoesAdversas atualizar(ReacoesAdversas reacoesAdversas, Integer id) {
@@ -45,7 +55,7 @@ public class ReacoesAdversasService {
   }
 
   /**
-   * Método: Deletar
+   * Método: Deletar.
    */
 
   public void apagar(Integer id) {

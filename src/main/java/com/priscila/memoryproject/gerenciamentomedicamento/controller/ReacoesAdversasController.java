@@ -5,12 +5,15 @@ import com.priscila.memoryproject.gerenciamentomedicamento.service.ReacoesAdvers
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Classe: Reações Adversas Controller.
@@ -21,6 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReacoesAdversasController {
   @Autowired
   private ReacoesAdversasService reacoesAdversasService;
+
+  /**
+   * Método: Listar.
+   */
+
+  @GetMapping
+  public List<ReacoesAdversas> listar() {
+    return reacoesAdversasService.listar();
+  }
 
   /**
    * Método: Incluir.
@@ -35,7 +47,7 @@ public class ReacoesAdversasController {
    * Método: Atualizar.
    */
 
-  @PutMapping
+  @PutMapping(path = "{id}")
   @Transactional
   public ReacoesAdversas atualizar(@RequestBody ReacoesAdversas reacoesAdversas, @PathVariable("id") Integer id) {
     return reacoesAdversasService.atualizar(reacoesAdversas, id);
