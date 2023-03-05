@@ -1,7 +1,9 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.controller;
 
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
+import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.service.MedicamentosService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +29,7 @@ public class MedicamentosController {
  */
 
   @PostMapping
-  public Medicamentos cadastrar(@RequestBody Medicamentos medicamentos) {
+  public Medicamentos cadastrar(@RequestBody @Valid Medicamentos medicamentos) {
     return medicamentosService.cadastrar(medicamentos);
   }
 
