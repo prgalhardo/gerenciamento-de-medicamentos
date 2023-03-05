@@ -6,6 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +18,25 @@ import java.util.List;
  * Entity: Medicamentos.
  */
 @Entity
-@Table(name = "medicamentos")
 public class Medicamentos {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  @NotBlank(message = "Campo não pode estar vazio!")
+  @Pattern(regexp = "([0-9].[0-9]{4}.[0-9]{4}.[0-9]{3}.[0-9]{0,1})")
   private String numeroRegistroAnvisa;
+  @NotEmpty(message = "Campo não pode estar vazio!")
   private String nome;
+  @NotEmpty(message = "Campo não pode estar vazio!")
+  @DateTimeFormat
   private String dataValidade;
+  @NotEmpty(message = "Campo não pode estar vazio!")
+  @Pattern(regexp = "^\\([1-9]{2}\\)(?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$")
   private String telefoneSac;
+  @NotEmpty(message = "Campo não pode estar vazio!")
+  @Pattern(regexp = "([0-9]{1,3},[0-9]{2})")
   private String preco;
+  @NotEmpty(message = "Campo não pode estar vazio!")
   private String quantidadeComprimidos;
   private String fabricante;
 
