@@ -3,7 +3,9 @@ package com.priscila.memoryproject.gerenciamentomedicamento.service;
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoExistenteException;
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoNaoEncontradoException;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
+import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.MedicamentosRepository;
+import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdversasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.Optional;
 public class MedicamentosService {
   @Autowired
   private MedicamentosRepository medicamentosRepository;
+  @Autowired
+  private ReacoesAdversasRepository reacoesAdversasRepository;
 
   /**
    * Método: Incluir.
@@ -20,6 +24,11 @@ public class MedicamentosService {
   public Medicamentos cadastrar(Medicamentos medicamentos) {
     if (medicamentosRepository.existsById(medicamentos.getId())) {
       throw new MedicamentoExistenteException("Medicamento existente!");
+    }
+    Optional<Medicamentos> medicamentosOptional = medicamentosRepository.findById(medicamentos.getId());
+    if (medicamentosOptional.isPresent()) {
+      Medicamentos obj = medicamentosOptional.get();
+      obj.setReacoesadversas(medicamentos.getReacoesadversas());
     }
     return medicamentosRepository.save(medicamentos);
   }
