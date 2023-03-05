@@ -1,11 +1,6 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -40,8 +35,8 @@ public class Medicamentos {
   private String quantidadeComprimidos;
   private String fabricante;
 
-  @OneToMany(mappedBy = "medicamentos")
-  private List<ReacoesAdversas> reacoesadversas = new ArrayList<>();
+  @OneToMany(mappedBy = "medicamentos", cascade = {CascadeType.ALL})
+  private List<ReacoesAdversas> reacoesAdversas = new ArrayList<>();
 
   public Medicamentos() {}
 
@@ -51,10 +46,6 @@ public class Medicamentos {
 
   public Integer getId() {
     return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
   }
 
   public String getNumeroRegistroAnvisa() {
@@ -113,11 +104,11 @@ public class Medicamentos {
     this.fabricante = fabricante;
   }
 
-  public List<ReacoesAdversas> getReacoesadversas() {
-    return reacoesadversas;
+  public List<ReacoesAdversas> getReacoesAdversas() {
+    return reacoesAdversas;
   }
 
-  public void setReacoesadversas(List<ReacoesAdversas> reacoesadversas) {
-    this.reacoesadversas = reacoesadversas;
+  public void setReacoesAdversas(List<ReacoesAdversas> reacoesAdversas) {
+    this.reacoesAdversas = reacoesAdversas;
   }
 }

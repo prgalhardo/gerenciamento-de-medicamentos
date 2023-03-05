@@ -9,6 +9,7 @@ import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdv
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,16 +20,24 @@ public class MedicamentosService {
   private ReacoesAdversasRepository reacoesAdversasRepository;
 
   /**
+   * Método: Listar.
+   */
+
+  public List<Medicamentos> listar() {
+    return medicamentosRepository.findAll();
+  }
+
+  /**
    * Método: Incluir.
    */
   public Medicamentos cadastrar(Medicamentos medicamentos) {
-    if (medicamentosRepository.existsById(medicamentos.getId())) {
-      throw new MedicamentoExistenteException("Medicamento existente!");
-    }
+//    if (medicamentosRepository.existsById(medicamentos.getId())) {
+//      throw new MedicamentoExistenteException("Medicamento existente!");
+//    }
     Optional<Medicamentos> medicamentosOptional = medicamentosRepository.findById(medicamentos.getId());
     if (medicamentosOptional.isPresent()) {
       Medicamentos obj = medicamentosOptional.get();
-      obj.setReacoesadversas(medicamentos.getReacoesadversas());
+      obj.setReacoesAdversas(medicamentos.getReacoesAdversas());
     }
     return medicamentosRepository.save(medicamentos);
   }
