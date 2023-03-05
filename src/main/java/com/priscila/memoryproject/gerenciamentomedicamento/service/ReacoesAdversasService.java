@@ -32,9 +32,9 @@ public class ReacoesAdversasService {
    */
 
   public ReacoesAdversas cadastrar(ReacoesAdversas reacoesAdversas) {
-    if (reacoesAdversasRepository.existsById(reacoesAdversas.getId())) {
-      throw new ReacaoExistenteException("Reação adversa existente!");
-    }
+//    if (reacoesAdversasRepository.existsById(reacoesAdversas.getId())) {
+//      throw new ReacaoExistenteException("Reação adversa existente!");
+//    }
     return reacoesAdversasRepository.save(reacoesAdversas);
   }
 
