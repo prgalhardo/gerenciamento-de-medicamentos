@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MedicamentosRepository extends JpaRepository<Medicamentos, Integer> {
-  boolean existsByNome(String nome);
+  @Override
+  boolean existsById(Integer integer);
 }
