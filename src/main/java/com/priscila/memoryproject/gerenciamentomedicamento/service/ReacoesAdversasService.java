@@ -4,6 +4,8 @@ import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoNaoEn
 import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdversasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class ReacoesAdversasService {
    * Método: Listar.
    */
 
-  public List<ReacoesAdversas> listar() {
-    return reacoesAdversasRepository.findAll();
+  public Page<ReacoesAdversas> listar(Pageable pageable) {
+    return reacoesAdversasRepository.findAll(pageable);
   }
 
   /**

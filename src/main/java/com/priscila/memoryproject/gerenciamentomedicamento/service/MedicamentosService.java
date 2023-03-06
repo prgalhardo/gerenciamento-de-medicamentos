@@ -5,6 +5,8 @@ import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.MedicamentosRepository;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdversasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class MedicamentosService {
    * Método: Listar.
    */
 
-  public List<Medicamentos> listar() {
-    return medicamentosRepository.findAll();
+  public Page<Medicamentos> listar(Pageable pageable) {
+    return medicamentosRepository.findAll(pageable);
   }
 
   /**
