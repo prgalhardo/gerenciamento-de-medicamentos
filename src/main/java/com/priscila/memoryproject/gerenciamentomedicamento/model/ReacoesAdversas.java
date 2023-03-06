@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.ManyToMany;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Entity: Reações Adversas.
@@ -15,13 +17,13 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class ReacoesAdversas {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
   private String descricao;
 
-  @ManyToOne
-  @JoinColumn (name = "medicamento_id")
-  private Medicamentos medicamentos;
+  @ManyToMany(mappedBy = "reacoesAdversas")
+//  @JoinColumn (name = "medicamento_id", nullable = false)
+  private Set<Medicamentos> medicamentos;
 
 
 //  public ReacoesAdversas(String descricao) {
@@ -55,12 +57,11 @@ public class ReacoesAdversas {
     this.descricao = descricao;
   }
 
-  public Medicamentos getMedicamentos() {
-    return medicamentos;
-  }
-
-  public void setMedicamentos(Medicamentos medicamentos) {
-    this.medicamentos = medicamentos;
-  }
-
+//  public Medicamentos getMedicamentos() {
+//    return medicamentos;
+//  }
+//
+//  public void setMedicamentos(Medicamentos medicamentos) {
+//    this.medicamentos = medicamentos;
+//  }
 }

@@ -1,6 +1,12 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -15,9 +21,9 @@ import java.util.List;
 @Entity
 public class Medicamentos {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  @NotBlank(message = "Campo não pode estar vazio!")
+  @NotEmpty(message = "Campo não pode estar vazio!")
   @Pattern(regexp = "([0-9].[0-9]{4}.[0-9]{4}.[0-9]{3}.[0-9]{0,1})")
   private String numeroRegistroAnvisa;
   @NotEmpty(message = "Campo não pode estar vazio!")
@@ -35,7 +41,11 @@ public class Medicamentos {
   private String quantidadeComprimidos;
   private String fabricante;
 
-  @OneToMany(mappedBy = "medicamentos", cascade = {CascadeType.ALL})
+  @ManyToMany
+  @JoinTable(
+      joinColumns = @JoinColumn(name = "reacoesadversas_id"),
+      inverseJoinColumns = @JoinColumn(name = "medicamentos_id")
+  )
   private List<ReacoesAdversas> reacoesAdversas = new ArrayList<>();
 
   public Medicamentos() {}

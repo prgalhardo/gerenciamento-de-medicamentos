@@ -42,9 +42,8 @@ public class MedicamentosController {
    * Método: Atualizar.
    */
 
-  @PutMapping
-  @Transactional
-  public Medicamentos atualizar(@RequestBody Medicamentos medicamentos, @PathVariable("id") Integer id) {
+  @PutMapping(path = "{id}")
+  public Medicamentos atualizar(@RequestBody @Valid Medicamentos medicamentos, @PathVariable("id") Integer id) {
     return medicamentosService.atualizar(medicamentos, id);
   }
 

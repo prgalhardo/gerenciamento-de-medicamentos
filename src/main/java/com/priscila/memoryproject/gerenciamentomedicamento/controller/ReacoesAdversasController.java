@@ -40,6 +40,7 @@ public class ReacoesAdversasController {
 
   @PostMapping
   public ReacoesAdversas cadastrar(@RequestBody ReacoesAdversas reacoesAdversas) {
+    System.out.println(reacoesAdversas);
     return reacoesAdversasService.cadastrar(reacoesAdversas);
   }
 

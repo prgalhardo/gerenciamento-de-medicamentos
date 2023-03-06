@@ -1,6 +1,5 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.service;
 
-import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoExistenteException;
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoNaoEncontradaException;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdversasRepository;
@@ -32,9 +31,6 @@ public class ReacoesAdversasService {
    */
 
   public ReacoesAdversas cadastrar(ReacoesAdversas reacoesAdversas) {
-//    if (reacoesAdversasRepository.existsById(reacoesAdversas.getId())) {
-//      throw new ReacaoExistenteException("Reação adversa existente!");
-//    }
     return reacoesAdversasRepository.save(reacoesAdversas);
   }
 
@@ -49,7 +45,7 @@ public class ReacoesAdversasService {
       if (reacoesAdversas.getDescricao() != null) {
         obj.setDescricao(reacoesAdversas.getDescricao());
       }
-      return reacoesAdversasRepository.save(reacoesAdversas);
+      return reacoesAdversasRepository.save(obj);
     }
     return null;
   }

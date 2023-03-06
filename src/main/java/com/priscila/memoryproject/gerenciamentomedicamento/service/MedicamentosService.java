@@ -2,6 +2,7 @@ package com.priscila.memoryproject.gerenciamentomedicamento.service;
 
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoExistenteException;
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoNaoEncontradoException;
+import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoNaoEncontradaException;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.MedicamentosRepository;
@@ -31,14 +32,6 @@ public class MedicamentosService {
    * Método: Incluir.
    */
   public Medicamentos cadastrar(Medicamentos medicamentos) {
-//    if (medicamentosRepository.existsById(medicamentos.getId())) {
-//      throw new MedicamentoExistenteException("Medicamento existente!");
-//    }
-    Optional<Medicamentos> medicamentosOptional = medicamentosRepository.findById(medicamentos.getId());
-    if (medicamentosOptional.isPresent()) {
-      Medicamentos obj = medicamentosOptional.get();
-      obj.setReacoesAdversas(medicamentos.getReacoesAdversas());
-    }
     return medicamentosRepository.save(medicamentos);
   }
 
@@ -74,7 +67,10 @@ public class MedicamentosService {
       if (medicamentos.getFabricante() != null) {
         obj.setFabricante(medicamentos.getFabricante());
       }
-      return medicamentosRepository.save(medicamentos);
+      if (medicamentos.getReacoesAdversas() != null) {
+        obj.setReacoesAdversas(medicamentos.getReacoesAdversas());
+      }
+      return medicamentosRepository.save(obj);
     }
     return null;
   }
