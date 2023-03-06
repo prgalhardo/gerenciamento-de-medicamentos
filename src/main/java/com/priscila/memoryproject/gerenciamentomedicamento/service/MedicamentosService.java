@@ -1,10 +1,7 @@
 package com.priscila.memoryproject.gerenciamentomedicamento.service;
 
-import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoExistenteException;
 import com.priscila.memoryproject.gerenciamentomedicamento.exception.MedicamentoNaoEncontradoException;
-import com.priscila.memoryproject.gerenciamentomedicamento.exception.ReacaoNaoEncontradaException;
 import com.priscila.memoryproject.gerenciamentomedicamento.model.Medicamentos;
-import com.priscila.memoryproject.gerenciamentomedicamento.model.ReacoesAdversas;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.MedicamentosRepository;
 import com.priscila.memoryproject.gerenciamentomedicamento.repository.ReacoesAdversasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +82,13 @@ public class MedicamentosService {
     } else {
       throw new MedicamentoNaoEncontradoException("Medicamento não existe!");
     }
+  }
+
+  /**
+   * Método: Listar pelo id.
+   */
+
+  public Optional<Medicamentos> listarPeloId(Integer id) {
+    return medicamentosRepository.findById(id);
   }
 }
