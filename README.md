@@ -21,7 +21,6 @@ A aplicação deve ter as seguintes funcionalidades:
 - [Pré-requisitos](#pré-requisitos)
   - [Ferramentas necessárias](#ferramentas-necessárias)
   - [Rodando no servidor local](#rodando-no-servidor-local)
-  - [Rodando os testes](#rodando-os-testes)
 - [Autora](#autora)
 
   ---
